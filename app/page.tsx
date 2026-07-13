@@ -152,8 +152,21 @@ export default function Dashboard() {
 
   const clientesAtendidasHojeCard = clientesProcessadas.filter(c => clienteTemAtendimentoNaData(c, hojeFormatado));
 
-  const faturamentoTotal = clientes.reduce((acc, c) => acc + (c.valor_pago || 0), 0);
-  const despesasTotal = despesas.reduce((acc, d) => acc + (d.valor || 0), 0);
+const hojeFormatado = new Date().toISOString().split('T')[0];
+
+const faturamentoTotal = clientesProcessadas.reduce((acc, c) => {
+    if (c.ultimo_atendimento && c.ultimo_atendimento <= hojeFormatado) {
+      return acc + (Number(c.valor_pago) || 0);
+    }
+    return acc;
+  }, 0);
+
+  const despesasTotal = despesas.reduce((acc, d) => {
+    if (d.data && d.data <= hojeFormatado) {
+      return acc + (Number(d.valor) || 0);
+    }
+    return acc;
+  }, 0);
   const lucroLiquido = faturamentoTotal - despesasTotal;
 
   const clientesFiltradasPorAba = clientesProcessadas.filter(c => {
