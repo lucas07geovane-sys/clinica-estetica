@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-estetica-bg: #FAF7F9;        /* Off-white suave de fundo */
+  --color-estetica-bege: #F5EBE6;      /* Bege claro para detalhes */
+  --color-estetica-rosa: #F3D1C9;      /* Rosa pastel clássico */
+  --color-estetica-rosa-dark: #E0B5AC;
+  --color-estetica-dourado: #D4AF37;   /* Dourado para bordas e destaques */
+  --color-estetica-texto: #4A3E3D;     /* Marrom escuro para leitura confortável */
+}
+
+body {
+  background-color: var(--color-estetica-bg);
+  color: var(--color-estetica-texto);
+  font-family: Arial, Helvetica, sans-serif;
+}
