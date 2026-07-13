@@ -152,7 +152,6 @@ export default function Dashboard() {
 
   const clientesAtendidasHojeCard = clientesProcessadas.filter(c => clienteTemAtendimentoNaData(c, hojeFormatado));
 
-const hojeFormatado = new Date().toISOString().split('T')[0];
 
 const faturamentoTotal = clientesProcessadas.reduce((acc, c) => {
     if (c.ultimo_atendimento && c.ultimo_atendimento <= hojeFormatado) {
